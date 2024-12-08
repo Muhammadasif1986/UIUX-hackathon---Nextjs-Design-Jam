@@ -56,7 +56,7 @@ const Hero2 = () => {
         </div>
 
     
-        <div className="flex flex-col gap-6 w-full h-auto lg:h-[500px]  bg-center rounded-lg bg-cover border-2 border-white">
+        <div className="flex flex-col gap-3 w-full h-auto lg:h-[500px]  bg-center rounded-lg bg-cover">
           
           <div className=' h-auto lg:h-[300px] w-full'>
             <Image
@@ -64,7 +64,7 @@ const Hero2 = () => {
               alt="Image"
             />
             </div >
-            <div className='flex justify-center gap-6 h-auto lg:h-[300px] w-full '>
+            <div className='flex justify-center gap-3 h-auto lg:h-[300px] w-full '>
                   <div className='w-1/2'>
             <Image
               src={unsplash5}
@@ -77,25 +77,6 @@ const Hero2 = () => {
             /></div>
             </div>
         </div>
-      </div>
-
-      {/* Profile Icon Section */}
-      <div className="absolute top-20 right-10 flex items-center space-x-2 bg-gray-700 px-4 py-2 rounded-full">
-        <Image
-          src="/user1.jpg" // Replace with profile image
-          alt="User Profile"
-          width={30}
-          height={30}
-          className="rounded-full"
-        />
-        <Image
-          src="/user2.jpg" // Replace with profile image
-          alt="User Profile"
-          width={30}
-          height={30}
-          className="rounded-full"
-        />
-        <span className="text-white">4</span>
       </div>
     </section>
   );
