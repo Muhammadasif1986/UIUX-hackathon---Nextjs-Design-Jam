@@ -8,16 +8,16 @@ const Vibes = Great_Vibes({
 
 export default function Menu() {
       const cards1 =[
-            {image:"/Dish1.png", itemsName:"Lettuce Leaf", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },
-            {image:"/Dish2.png", itemsName:"Fresh Breakfast", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"14.5$", },
-            {image:"/Dish3.png", itemsName:"Mild Butter", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },
-            {image:"/Dish4.png", itemsName:"Fresh Bread", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },   
+            {image:"/dish1.png", itemsName:"Lettuce Leaf", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },
+            {image:"/dish2.png", itemsName:"Fresh Breakfast", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"14.5$", },
+            {image:"/dish3.png", itemsName:"Mild Butter", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },
+            {image:"/dish4.png", itemsName:"Fresh Bread", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },   
       ]
       const cards2 =[
-            {image:"/Dish5.png", itemsName:"Glow Cheese", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },
-            {image:"/Dish6.png", itemsName:"Italian Pizza", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"14.5$", },
-            {image:"/Dish7.png", itemsName:"Sllice Beef", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },
-            {image:"/Dish8.png", itemsName:"Mushaom Pizza", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },   
+            {image:"/dish5.png", itemsName:"Glow Cheese", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },
+            {image:"/dish6.png", itemsName:"Italian Pizza", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"14.5$", },
+            {image:"/dish7.png", itemsName:"Sllice Beef", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },
+            {image:"/dish8.png", itemsName:"Mushaom Pizza", Category:"Lacus nisi, et ac dapibus velit in consequat.", rates:"12.5$", },   
       ]
   return (
     <main className="bg-[#0d0d0d] flex w-full h-auto justify-center items-center py-6">
