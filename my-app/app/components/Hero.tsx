@@ -9,22 +9,22 @@ const Vibes = Great_Vibes({
     });
 export default function Hero() {
   return (
-    <main className='flex justify-center items-center w-full min-h-screen lg:h-[800px] bg-[#0d0d0d] -mt-48 pb-16'>
-      <div className='flex flex-col lg:flex-row justify-center items-center w-full lg:w-10/12 lg:mt-24'>
-      <div className='flex w-10/12 mt-[230px] lg:mt-0'>
-            <div className='flex flex-col justify-center items-center h-[350px] lg:h-[350px] w-6 lg:mt-36 mr-5'>
-            <span className="flex-grow h-10 border-[1px] "></span>
+    <main className='flex justify-center items-center w-full  lg:h-[500px] bg-[#0d0d0d] py-10'>
+      <div className='flex flex-col lg:flex-row justify-center items-center w-full lg:w-10/12'>
+      <div className='flex w-10/12 lg:mt-0'>
+            <div className='flex flex-col justify-center items-center h-auto lg:h-[400px] md:h-[300px] w-6 mr-5'>
+            <span className="flex-grow h-40 border-[1px] "></span>
             <span className= "flex flex-col gap-5 text-white my-3">
                   <p className=''><FaFacebookF /></p>
                   <p className='text-orange-500'><FaTwitter /></p>
                   <Image src="/p.png" alt='image' width={12} height={12} />
             </span>
-            <span className="flex-grow h-10 border-[1px]"></span>
+            <span className="flex-grow h-40 border-[1px]"></span>
             </div>
 
-            <div className='flex flex-col gap-4 w-10/12 lg:w-full h-auto lg:h-[350px] lg:mt-48'>
+            <div className='flex flex-col gap-4 w-10/12 lg:w-full h-auto lg:h-[350px] mt-24 '>
             <div className={Vibes.className}>
-            <p className='text-[#ff9f0d] text-[40px]'>Its Quick & Amusing!</p>
+            <p className='text-[#ff9f0d] text-[20px]'>Its Quick & Amusing!</p>
             </div>
             <div className='flex text-6xl text-[#ff9f0d] font-semibold'>
             <p>Th<span className='text-white'>
@@ -37,7 +37,7 @@ export default function Hero() {
             </div>
             </div>
 
-            <div className='relative h-full lg:h-[470px] w-10/12 lg:w-full mt-14 lg:mt-36' >
+            <div className='relative h-full lg:h-[450px] w-10/12 lg:w-full mt-14 lg:mt-0' >
             <Image src="/three.png" alt='image' width={260} height={260} className='ml-80 hidden md:block'/>
             <Image src="/one.png" alt='image' width={400} height={400} className='ml-3 md:-mt-[360px] 3 hidden md:block' />
             <Image src="/two.png" alt='image' width={420} height={420} className='md:ml-9 md:-mt-[400px]' />

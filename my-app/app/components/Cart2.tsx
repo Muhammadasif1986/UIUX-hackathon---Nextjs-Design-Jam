@@ -13,42 +13,42 @@ const Vibes = Great_Vibes({
 const Cart2 = () => {
   return (
     <section className="bg-black text-white px-6 py-8 lg:py-36 ">
-      <div className="container w-10/12 mx-auto h-auto lg:h-[300px] flex flex-wrap lg:flex-nowrap items-center gap-6">
+      <div className="container w-10/12 mx-auto h-auto lg:h-[500px] flex flex-wrap lg:flex-nowrap items-center gap-6">
        
     
-        <div className="flex flex-col gap-2 w-full h-auto lg:h-[500px]  bg-center rounded-lg bg-cover">
+        <div className="flex flex-col gap-2 w-full h-auto lg:h-[500px]  bg-center rounded-lg bg-cover border-[1px]">
           
-            <div className='flex justify-center items-end gap-2 h-auto lg:h-[300px] w-full'>
-            <div className='w-2/3 h-[150px]'>
+            <div className='flex justify-start gap-2 h-auto lg:h-[230px] w-full border-[1px]'>
+            <div className='w-8/12 h-auto flex items-baseline '>
             <Image
               src={unsplash6}
               alt="Image"
             /></div>
-          <div className='w-1/3 h-[150px]'>
+          <div className='w-4/12 h-auto  mt-20'>
             <Image 
               src={unsplash5}
               alt="Image"
             /></div> 
             </div>
 
-            <div className='flex justify-center gap-2 h-auto lg:h-[300px] w-full'>
-            <div className='w-2/3'>
+            <div className='flex justify-center items-start gap-2 h-auto w-full'>
+            <div className='w-4/12 h-[200px]'>
             <Image 
               src={unsplash4}
               alt="Image"
             /></div> 
-            <div className='w-2/3 h-[200px]'>
+            <div className='w-4/12'>
             <Image 
               src={unsplash6}
               alt="Image"
             /></div> 
             
-             <div className='w-1/2 h-[200px]'>
+             <div className='w-4/12'>
             <Image 
               src={unsplash4}
               alt="Image"
             />
-             <div className='w-full h-[100px]'>
+             <div className=''>
             <Image 
               src={unsplash5}
               alt="Image"
