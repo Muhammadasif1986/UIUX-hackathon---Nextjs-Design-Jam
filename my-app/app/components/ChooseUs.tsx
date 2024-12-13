@@ -16,9 +16,9 @@ const Cart2 = () => {
       <div className="container w-10/12 mx-auto h-auto lg:h-[500px] flex flex-wrap lg:flex-nowrap items-center gap-6">
        
     
-        <div className="flex flex-col gap-2 w-full h-auto lg:h-[500px]  bg-center rounded-lg bg-cover border-[1px]">
+        <div className="flex flex-col gap-2 w-full h-auto lg:h-[500px]  bg-center rounded-lg bg-cover">
           
-            <div className='flex justify-start gap-2 h-auto lg:h-[230px] w-full border-[1px]'>
+            <div className='flex justify-start gap-2 h-auto lg:h-[230px] w-full'>
             <div className='w-8/12 h-auto flex items-baseline '>
             <Image
               src={unsplash6}
@@ -83,13 +83,13 @@ const Cart2 = () => {
       </div>
       <div className='flex flex-col justify-center items-center'>
           <div className='flex justify-center items-center bg-[#ff9f0d] h-16 w-16'>
-            <div><Image src="/Vector12.png" alt='Image' width={20}  height={20}/></div>
+            <div><Image src="/Cookie.png" alt='Image' width={40}  height={40}/></div>
           </div>
           <p className='text-white text-sm mt-2'>Dinner</p>
       </div>
       <div className='flex flex-col justify-center items-center'>
           <div className='flex justify-center items-center bg-[#ff9f0d] h-16 w-16'>
-            <div><Image src="/Vector11.png" alt='Image' width={40}  height={40}/></div>
+            <div><Image src="/Wine.png" alt='Image' width={40}  height={40}/></div>
           </div>
           <p className='text-white text-sm mt-2'>Lunch</p>
       </div>

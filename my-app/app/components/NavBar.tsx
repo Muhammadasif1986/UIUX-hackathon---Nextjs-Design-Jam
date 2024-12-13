@@ -1,4 +1,5 @@
 import React from "react"
+import { FiSearch } from "react-icons/fi";
 import Link from "next/link"
 import { PiHandbagSimple } from "react-icons/pi";
 
@@ -24,7 +25,7 @@ export default function NavBar() {
 <div className='flex justify-center lg:justify-end items-center w-full lg:w-4/12 mr-3'>
 <div 
 className='flex justify-between items-center w-8/12 mt-5 lg:mt-0 lg:w-[388px] h-12 bg-transparent border-[1px] border-[#ff9f0d] text-white rounded-[27px] px-4'> Search
-<p className='text-white'>Search</p>
+<p className='text-white text-2xl'><FiSearch /></p>
 </div>
 <PiHandbagSimple className='text-white text-2xl ml-3 mt-5 lg:mt-0' />
 </div>
