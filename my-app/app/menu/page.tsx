@@ -1,9 +1,10 @@
 import React from 'react'
+import MenuNav from '../components/Menu/MenuNav'
 
 export default function Menu() {
   return (
     <div>
-      Menu
+      <MenuNav />
     </div>
   )
 }

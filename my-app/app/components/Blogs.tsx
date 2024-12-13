@@ -44,7 +44,7 @@ export default function Blogs() {
       
       <div className="flex flex-col justify-center lg:flex-row items-center lg:w-8/12 py-10 gap-10 lg:gap-5 lg:mb-0">
         {blogs.map((blog, index) => (
-          <div className="w-full">
+          <div key={index} className="w-full">
               <Image src={blog.image} alt="Blog Image" width={400} height={400}
                className="border-r-[1px] border-white bg-cover  w-[300px] xl:w-[400px] "/>
                      

@@ -10,11 +10,13 @@ import OurChef from './components/ourChef';
 import Testimonials from './components/Testimonials';
 import Properties from './components/properties';
 import Blog from './components/Blogs';
+import NavBar from './components/NavBar';
 
 
 export default function Home() {
   return (
    <div>
+    <NavBar />
       <Hero />
       <Hero2 />
       <Cart />
