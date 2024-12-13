@@ -15,7 +15,7 @@ export default function NavBar() {
 </div>
 <div className='flex flex-col lg:flex-row justify-between items-center w-full pb-2 text-sm mt-2'>
 
-<ul className='flex  justify-center gap-4 lg:justify-between items-center text-sm w-full lg:w-4/12 h-auto mt-2 lg:mt-0'>
+<ul className='flex justify-center gap-2 lg:gap-6 lg:justify-between items-center lg:text-sm text-xs w-full lg:w-4/12 h-auto mt-2 lg:mt-0'>
 <li className= 'text-orange-500'><Link href="/">Home</Link></li>
 <li className='text-white'><Link href="/menu">Menu</Link></li>
 <li className='text-white'><Link href="./blog">Blog</Link></li>
@@ -27,7 +27,7 @@ export default function NavBar() {
 </ul>
 <div className='flex justify-center lg:justify-end items-center w-full lg:w-4/12 mr-3'>
 <div 
-className='flex justify-between items-center w-8/12 mt-5 lg:mt-0 lg:w-[388px] h-12 bg-transparent border-[1px] border-[#ff9f0d] text-white rounded-[27px] px-4'> Search
+className='flex justify-between items-center w-8/12 mt-5 lg:mt-0 lg:ml-3 lg:w-[388px] h-12 bg-transparent border-[1px] border-[#ff9f0d] text-white rounded-[27px] px-4'> Search
 <p className='text-white text-2xl'><FiSearch /></p>
 </div>
 <PiHandbagSimple className='text-white text-2xl ml-3 mt-5 lg:mt-0' />

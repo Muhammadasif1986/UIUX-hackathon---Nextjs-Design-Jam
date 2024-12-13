@@ -15,7 +15,7 @@ export default function MenuNav() {
 <p className='text-orange-500'>Food</p>
 <p className='text-white'>tuck</p>
 </div>
-<ul className='flex  justify-center gap-4 lg:justify-between items-center text-sm w-full lg:w-4/12 h-auto mt-2 lg:mt-0'>
+<ul className='flex  justify-center gap-4 text-xs lg:justify-between items-center lg:text-sm w-full lg:w-4/12 h-auto mt-2 lg:mt-0'>
 <li className= 'text-orange-500'><Link href="/">Home</Link></li>
 <li className='text-white'><Link href="/menu">Menu</Link></li>
 <li className='text-white'><Link href="./blog">Blog</Link></li>
