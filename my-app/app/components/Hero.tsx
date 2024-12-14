@@ -17,7 +17,7 @@ export default function Hero() {
             <span className= "flex flex-col gap-5 text-white my-3">
                   <p className=''><FaFacebookF /></p>
                   <p className='text-orange-500'><FaTwitter /></p>
-                  <Image src="/p.png" alt='image' width={12} height={12} />
+                  <Image src="/P.png" alt='image' width={12} height={12} />
             </span>
             <span className="flex-grow h-40 border-[1px]"></span>
             </div>

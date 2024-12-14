@@ -1,4 +1,8 @@
 import Image from "next/image";
+import { FaFacebookF } from "react-icons/fa";
+import { IoLogoTwitter } from "react-icons/io";
+import { CiInstagram } from "react-icons/ci";
+import { IoLogoYoutube } from "react-icons/io";
 const Footer = () => {
       const PicAdress =[
             "/unsplash1.png","/unsplash2.png","/unsplash3.png"
@@ -97,26 +101,31 @@ const Footer = () => {
           </div>
     
      
-          <div className="bg-gray-800 py-6 mt-6 text-center text-sm">
+          <div className="flex justify-between items-center px-8 bg-gray-800 py-6 mt-6 text-sm">
             <p className="text-gray-300">
               Copyright © 2022 by Ayeman. All Rights Reserved.
             </p>
-            <div className="flex justify-center mt-4 space-x-4">
+
+            <div className="flex justify-center mt-4 space-x-4 lg:mr-32 text-black text-xl">
              
-              <span className="w-8 h-8 bg-gray-600 flex items-center justify-center rounded-full">
-                <i className="fab fa-facebook-f"></i>
+              <span className="w-8 h-8 bg-white flex items-center justify-center rounded-md">
+                <i><FaFacebookF /></i>
               </span>
-              <span className="w-8 h-8 bg-gray-600 flex items-center justify-center rounded-full">
-                <i className="fab fa-twitter"></i>
+              <span className="w-8 h-8 bg-white flex items-center justify-center rounded-md">
+                <i><IoLogoTwitter /></i>
               </span>
-              <span className="w-8 h-8 bg-gray-600 flex items-center justify-center rounded-full">
-                <i className="fab fa-instagram"></i>
+              <span className="w-8 h-8 bg-white flex items-center justify-center rounded-md">
+                <i><CiInstagram /></i>
               </span>
+              <span className="w-8 h-8 bg-white flex items-center justify-center rounded-md text-[#ff9f0d]">
+                <i><IoLogoYoutube /></i>
+              </span>
+              
             </div>
           </div>
         </footer>
       );
     };
-    
+  
     export default Footer;
     

@@ -148,7 +148,7 @@ export default function MenuPage() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-10/12 lg:w-8/12 pb-14">
               <div className="lg:col-span-2 lg:ml-10">
                   <span className='text-[#ff9f0d] text-lg'><LuCoffee /></span>
-                  <h2 className="text-2xl font-bold text-black mb-6 mt-2">Starter Menu</h2>
+                  <h2 className="text-2xl font-bold text-black mb-6 mt-2">Main Course</h2>
                   {mainCourse.map((item, index) => (
                     <div
                       key={index}
@@ -191,7 +191,7 @@ export default function MenuPage() {
                 </div>
                 <div className="lg:col-span-2 lg:ml-10">
                   <span className='text-[#ff9f0d] text-lg'><LuCoffee /></span>
-                  <h2 className="text-2xl font-bold text-black mb-6 mt-2">Starter Menu</h2>
+                  <h2 className="text-2xl font-bold text-black mb-6 mt-2">Dessert</h2>
                   {desserts.map((item, index) => (
                     <div
                       key={index}
@@ -215,7 +215,7 @@ export default function MenuPage() {
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-10/12 lg:w-8/12">
               <div className="lg:col-span-2 lg:ml-10">
                   <span className='text-[#ff9f0d] text-lg'><LuCoffee /></span>
-                  <h2 className="text-2xl font-bold text-black mb-6 mt-2">Starter Menu</h2>
+                  <h2 className="text-2xl font-bold text-black mb-6 mt-2">Drinks</h2>
                   {drinks.map((item, index) => (
                     <div
                       key={index}
@@ -243,6 +243,12 @@ export default function MenuPage() {
                     className="rounded-md object-cover"
                   />
                 </div>
+              </div>
+              <div className='py-14 text-center w-full flex flex-col justify-center items-center'>
+                <p className='text-xs mb-2'>Partners & Clients</p>
+                <p className='text-3xl font-medium mb-10'>We work with the best pepole</p>
+                <Image src="/Logo.png" alt='Image' width={900} height={300}  
+                className='w-8/12'/>
               </div>
             </section>
           );

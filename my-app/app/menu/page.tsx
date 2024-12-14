@@ -7,11 +7,13 @@ import MenuPage from '../components/Menu/MenuPage'
 
 export default function Menu() {
   const pageName = "Menu"
+  const route = "/menu"
   return (
     <div>
       <MenuNav />
       <Header 
       name={pageName}
+      route={route}
       />
       <MenuPage />
     </div>
