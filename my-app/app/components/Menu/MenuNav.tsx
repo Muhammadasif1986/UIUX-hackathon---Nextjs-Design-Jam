@@ -26,8 +26,8 @@ export default function MenuNav() {
 </ul>
 <div className='flex justify-center lg:justify-end items-center w-full lg:w-4/12 mr-3'>
 <p className='text-white text-2xl ml-3 mt-5 lg:mt-0'><FiSearch /></p>
-<p className='text-white text-2xl ml-3 mt-5 lg:mt-0'><FaRegUser /></p>
-<PiHandbagSimple className='text-white text-2xl ml-3 mt-5 lg:mt-0' />
+<Link href="/signup"><p className='text-white text-2xl ml-3 mt-5 lg:mt-0'><FaRegUser /></p></Link>
+<Link href="/error404"><PiHandbagSimple className='text-white text-2xl ml-3 mt-5 lg:mt-0' /></Link>
 
 </div>
 

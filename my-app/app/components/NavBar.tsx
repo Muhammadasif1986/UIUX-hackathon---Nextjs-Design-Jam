@@ -30,7 +30,7 @@ export default function NavBar() {
 className='flex justify-between items-center w-8/12 mt-5 lg:mt-0 lg:ml-3 lg:w-[388px] h-12 bg-transparent border-[1px] border-[#ff9f0d] text-white rounded-[27px] px-4'> Search
 <p className='text-white text-2xl'><FiSearch /></p>
 </div>
-<PiHandbagSimple className='text-white text-2xl ml-3 mt-5 lg:mt-0' />
+<Link href="/error404"><PiHandbagSimple className='text-white text-2xl ml-3 mt-5 lg:mt-0' /></Link>
 </div>
 
 </div>

@@ -3,6 +3,8 @@ import { FaFacebookF } from "react-icons/fa";
 import { IoLogoTwitter } from "react-icons/io";
 import { CiInstagram } from "react-icons/ci";
 import { IoLogoYoutube } from "react-icons/io";
+import Link from "next/link"
+
 const Footer = () => {
       const PicAdress =[
             "/unsplash1.png","/unsplash2.png","/unsplash3.png"
@@ -68,7 +70,7 @@ const Footer = () => {
             <div className="w-full lg:w-1/5 mb-6">
               <h3 className="text-lg font-bold">Help?</h3>
               <ul className="text-gray-300 mt-4 space-y-2">
-                <li>FAQ</li>
+                <Link href="/faq"><li>FAQ</li></Link>
                 <li>Terms & Conditions</li>
                 <li>Reporting</li>
                 <li>Documentation</li>
