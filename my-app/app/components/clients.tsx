@@ -10,7 +10,7 @@ export default function Clients() {
             {image:"/Group.png", Category:"Happy Customers", rates:"220" }
       ]
   return (
-    <div className=" flex justify-center items-center h-auto lg:py-20 w-full bg-opacity-5 bg-contain" style={{ backgroundImage: "url('/header.png')" }}>
+    <div className=" flex justify-center items-center h-auto lg:py-20 w-full bg-opacity-5 bg-cover" style={{ backgroundImage: "url('/header.png')" }}>
       <div className='flex flex-col lg:flex-row justify-between items-center w-10/12 lg:w-8/12 h-auto'>
       {cards.map((card, index) => (
             <div key={index} className='flex flex-col justify-center items-center gap-3 my-8 lg:mt-0'>
