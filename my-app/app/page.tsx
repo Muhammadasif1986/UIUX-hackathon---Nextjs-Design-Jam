@@ -6,7 +6,7 @@ import Cart from './components/FoodCategory';
 import Cart2 from './components/ChooseUs';
 import Clients from './components/clients';
 import Menu from '../app/components/Menu';
-import OurChef from './components/ourChef';
+import OurChef from './components/OurChef/ourChef';
 import Testimonials from './components/Testimonials';
 import Properties from './components/properties';
 import Blog from './components/Blogs';

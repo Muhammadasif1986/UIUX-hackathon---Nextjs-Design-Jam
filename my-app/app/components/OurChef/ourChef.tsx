@@ -1,6 +1,8 @@
+
 import React from 'react'
 import Image from 'next/image'
 import { Great_Vibes } from "next/font/google";
+import Link from 'next/link';
 const Vibes = Great_Vibes({
       subsets: ["latin"],
       weight: "400",
@@ -18,7 +20,9 @@ export default function OurChef() {
                 <div><Image src="/chef2.png" alt="Image" width={200} height={200} /></div>
                 <div><Image src="/chef3.png" alt="Image" width={200} height={200} /></div>
           </div>
+          <Link href='/ourChef'>
           <button className='rounded-3xl border-[1px] border-[#ff9f0d] text-[#ff9f0d] text-sm mt-12 py-2 px-3'>See More</button>
+       </Link>
     </div>
   </main>
   )
