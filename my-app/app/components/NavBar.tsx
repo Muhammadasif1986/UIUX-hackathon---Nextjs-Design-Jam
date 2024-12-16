@@ -3,6 +3,7 @@ import { FiSearch } from "react-icons/fi";
 import Link from "next/link"
 import { PiHandbagSimple } from "react-icons/pi";
 import { LuChevronDown } from "react-icons/lu";
+import PagesNav from "./PagesNav";
 
 
 export default function NavBar() {
@@ -19,8 +20,8 @@ export default function NavBar() {
 <li className= 'text-orange-500'><Link href="/">Home</Link></li>
 <li className='text-white'><Link href="/menu">Menu</Link></li>
 <li className='text-white'><Link href="./blog">Blog</Link></li>
-<li className='text-white'><Link href="./pages">Pages</Link></li>
-<li className='text-white'><Link href="/about" className="flex items-end">About <span className=""><LuChevronDown /></span></Link></li>
+<li className='text-white flex items-center'><PagesNav /><LuChevronDown /></li>
+<li className='text-white'><Link href="/about">About</Link></li>
 <li className='text-white'><Link href="/shop">Shop</Link></li>
 
 <li className='text-white'><Link href="/contact">Contact</Link></li>

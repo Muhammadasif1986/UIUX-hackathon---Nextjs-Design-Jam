@@ -60,7 +60,7 @@ export default function Hero1() {
               Show more
             </button>
             <button className="flex items-center font-semibold space-x-2">
-            <Image src="/play.png" alt="Image" width={40} height={40} />
+            <Image src="/Play.png" alt="Image" width={40} height={40} />
             Watch video </button>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function Hero1() {
           pellentesque bibendum non dui volutpat fringilla bibendum.
         </p>
         <Image
-          src="/LargFoodImage.png"
+          src="/LargfoodImage.png"
           alt="Large food image"
           width={800}
           height={200}
@@ -82,25 +82,25 @@ export default function Hero1() {
         />
 
        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 px-60">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 px-16">
         <div className="flex flex-col justify-center items-center">
         <p className="text-4xl"><SiCodechef /></p>
-            <h3 className="text-lg font-semibold mb-2 px-14">Best Chef</h3>
-            <p className="text-gray-600 px-14">
+            <h3 className="text-lg font-semibold mb-2 lg:px-14">Best Chef</h3>
+            <p className="text-gray-600 lg:px-14">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
           <div className="flex flex-col justify-center items-center">
             <p className="text-4xl"><FiCoffee /></p>
-            <h3 className="text-lg font-semibold mb-2 px-14">120 Item food</h3>
-            <p className="text-gray-600 px-14">
+            <h3 className="text-lg font-semibold mb-2 lg:px-14">120 Item food</h3>
+            <p className="text-gray-600 lg:px-14">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
           <div className="flex flex-col justify-center items-center">
             <p className="text-4xl"><TbWoman /></p>
             <h3 className="text-lg font-semibold mb-2">Clean Environment</h3>
-            <p className="text-gray-600 px-14">
+            <p className="text-gray-600 lg:px-14">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
