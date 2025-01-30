@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { FaAngleRight } from "react-icons/fa6";
 export default function Header(props:any) {
   return (
-    <div className=' w-full h-[350px] bg-cover' style={{backgroundImage:"url('/header.png')"}}>
+    <div className=' w-full h-[350px] bg-cover pt-24' style={{backgroundImage:"url('/header.png')"}}>
         <div className='flex flex-col justify-center items-center h-full'>
             <h1 className='text-4xl font-semibold text-white'>Our {props.name}</h1>
             <p className='text-white flex justify-center items-center mt-10'>

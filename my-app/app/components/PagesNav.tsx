@@ -38,7 +38,7 @@ import {
             <li className='hover:bg-slate-800 hover:rounded-xl p-2'><Link href="/signup"><span className='text-[#ff9f0d] font-semibold text-xl'>S</span>ignUp</Link></li>
 
             <li className='hover:bg-slate-800 hover:rounded-xl p-2'><Link href="/error404"><span className='text-[#ff9f0d] font-semibold text-xl'>E</span>rror404</Link></li>
-            <li className='hover:bg-slate-800 hover:rounded-xl p-2'><Link href="/shoppingList"><span className='text-[#ff9f0d] font-semibold text-xl'>S</span>hoppingCart</Link></li>
+            <li className='hover:bg-slate-800 hover:rounded-xl p-2'><Link href="/cart"><span className='text-[#ff9f0d] font-semibold text-xl'>S</span>hoppingCart</Link></li>
 
         </ul>
       </SheetDescription>

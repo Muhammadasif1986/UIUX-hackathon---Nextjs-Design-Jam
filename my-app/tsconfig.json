@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es2015", // Ensures compatibility with modern JavaScript features like Set
+    "lib": ["dom", "dom.iterable", "esnext"], // Includes required libraries for browser and ESNext features
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -12,6 +13,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "downlevelIteration": true, // Adds support for iteration in ES5-compatible builds
     "plugins": [
       {
         "name": "next"
@@ -21,6 +23,12 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/components/Menu/MenuPage.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/components/Menu/MenuPage.tsx"
+  ],
   "exclude": ["node_modules"]
 }

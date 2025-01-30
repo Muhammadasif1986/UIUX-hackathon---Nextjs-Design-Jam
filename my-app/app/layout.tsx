@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
+import { CartProvider } from "@/context/CartContext";
 
 
 
@@ -21,9 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         
-      <main>{children}</main>  
-    
+      <CartProvider> 
+        {children} 
         <Footer />
+        </CartProvider> 
+    
+        
         </body>
     </html>
   );

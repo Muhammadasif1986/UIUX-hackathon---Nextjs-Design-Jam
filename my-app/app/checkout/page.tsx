@@ -1,7 +1,7 @@
 import React from 'react'
 import MenuNav from '../components/Menu/MenuNav'
 import Header from '../components/Header'
-import ContactPage from '../components/Contact/ContactPage'
+import CheckOut from '../components/CheckOut'
 
 export default function Contact() {
   const Name = "Check Out"
@@ -11,7 +11,7 @@ export default function Contact() {
      <Header
      name={Name}
      />
-     <ContactPage />
+     <CheckOut />
     </div>
   )
 }

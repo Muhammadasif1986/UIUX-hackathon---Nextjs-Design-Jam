@@ -1,96 +1,61 @@
-'use client';
+'use client'
 
 import Image from "next/image";
-import { client } from "@/sanity/lib/client";
-
-
-
-interface ChefDetails {
+import {client} from '@/sanity/lib/client';
+import { useEffect, useState } from 'react';
+import Link from "next/link";
+interface chefData {
   name: string;
   position: string;
   imageUrl: string;
-  slug: string;
-  specialty: string;
-  experience: string;
-  description: string;
-  available: boolean;
+  slug:string
 }
 
-// Fetch a single chef by slug
+const getData = async (): Promise<chefData[]> => {
 
+  const data = await client.fetch(
+       `*[_type == "chef"]{
+      name,
+      position,
+      "imageUrl": image.asset->url,
+      "slug":slug.current
+    }`
+   );
+ return data;
+};
 
+export default function OurChefDetails() {
 
-export default async function ChefDetailsPage({
-  params: { details },
-}: {
-  params: { details: string };
-}) {
-      const query = `*[_type == "chef" && slug.current == $details][0]{
-            name,
-            position,
-            "imageUrl": image.asset->url,
-            "slug": slug.current,
-            specialty,
-            experience,
-            description,
-            available
-          }`;
-        
-          
-            const chef = await client.fetch(query, {details} );
-         
+   const [ChefData, setChefData] = useState<chefData[]>([]);
       
-  
-  if (!chef) {
-    return (
-      <main>
-        <section className="flex justify-center items-center bg-gray-200 min-h-screen">
-          <div className="text-center">
-            <h1 className="text-xl font-semibold text-red-600">
-              Chef details not found. Please check the URL or try again.
-            </h1>
-          </div>
-        </section>
-      </main>
-    );
-  }
-
+        useEffect(() => {
+          const fetchChefData = async () => {
+            const data = await getData();
+            setChefData(data);
+          };
+          fetchChefData();
+        }, []);
+ 
   return (
-    <main>
-      <section className="flex justify-center items-center bg-slate-300">
-        <div className="flex flex-col justify-center items-center w-full lg:w-8/12 lg:p-20">
-          <h1 className="text-3xl font-semibold underline underline-offset-2 pb-10">
-            {chef.name} - Specialty: {chef.specialty}
-          </h1>
-          <div className="w-auto px-6">
+    <div className="max-w-screen-xl mx-auto p-4 lg:w-8/12 py-10 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {ChefData.map((member, index) => (
+          <div key={index}>
+            <Link href={`/chefDetail/${member.slug}`}>
             <Image
-              src={chef.imageUrl}
-              alt={`Image of ${chef.name}`}
-              width={600}
-              height={400}
-              className="rounded-xl"
+              src={member.imageUrl}
+              alt={member.name}
+              width={300}
+              height={300}
+              className="rounded-lg object-cover"
             />
+            <h2 className="font-semibold mt-4 text-center">{member.name}</h2>
+            <p className="text-gray-600 text-center">{member.position}</p>
+          </Link>
           </div>
-          <div className="text-lg mt-6 text-center">
-            <p>
-              <strong>Position:</strong> {chef.position}
-            </p>
-            <p>
-              <strong>Experience:</strong> {chef.experience} years
-            </p>
-            <p>
-              <strong>Description:</strong> {chef.description}
-            </p>
-            <p
-              className={`mt-4 font-bold ${
-                chef.available ? "text-green-600" : "text-red-600"
-              }`}
-            >
-              {chef.available ? "Available for Work" : "Currently Unavailable"}
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
+        ))}
+      </div>
+    </div>
   );
 }
+

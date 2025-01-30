@@ -1,9 +1,12 @@
+'use client'
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
+import { useCart } from "@/context/CartContext";
 import MenuNav from "@/app/components/Menu/MenuNav";
 import Header from "@/app/components/Header";
 
 interface FoodDetails {
+  id: string;
   name: string;
   category: string;
   price: number;
@@ -21,6 +24,7 @@ export default async function FoodDetailsPage({
   params: { details: string };
 }) {
   const query = `*[_type == "food" && slug.current == $details][0]{
+    _id,
     name,
     category,
     "imageUrl": image.asset->url,
@@ -36,21 +40,41 @@ export default async function FoodDetailsPage({
 
   if (!food) {
     return (
-      <main className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold text-red-500">Food details not found</h1>
-          <p className="mt-2 text-gray-600">Please check the URL or try again later.</p>
-        </div>
+      <main>
+        <section className="flex justify-center items-center bg-gray-200 min-h-screen">
+          <div className="text-center">
+            <h1 className="text-xl font-semibold text-red-600">
+              Food details not found. Please check the URL or try again.
+            </h1>
+          </div>
+        </section>
       </main>
     );
   }
-  const pageName = "Shop Detail";
+
+  return (
+    <FoodDetailsContent food={food} />
+  );
+}
+
+// Client-side Component for UI and Add to Cart functionality
+
+function FoodDetailsContent({ food }: { food: FoodDetails }) {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: food.id,
+      name: food.name,
+      price: food.price,
+      quantity: 1,
+    });
+  };
+const pageName = "Shop Detail"
   return (
     <>
-     <MenuNav />
-          <Header 
-          name={pageName}
-          />
+    <MenuNav />
+    <Header name={pageName} />
     <main className="h-auto bg-gray-50 p-6 my-16">
       <section className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
         <div className="flex flex-col lg:flex-row">
@@ -97,10 +121,17 @@ export default async function FoodDetailsPage({
                 ))}
               </div>
             </div>
+
+            <button
+              onClick={handleAddToCart}
+              className="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </section>
     </main>
-    </>
+  </>
   );
 }
