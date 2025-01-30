@@ -6,17 +6,18 @@ import MenuNav from "@/app/components/Menu/MenuNav";
 import Header from "@/app/components/Header";
 
 interface FoodDetails {
-  id: string;
+  id: number;
   name: string;
   category: string;
   price: number;
   originalPrice: number;
   tags: string[];
   imageUrl: string;
-  slug: string;
+  slug: { current: string }; // Fix: Ensure slug has the correct type
   description: string;
   available: boolean;
 }
+
 
 export default async function FoodDetailsPage({
   params: { details },
@@ -28,15 +29,16 @@ export default async function FoodDetailsPage({
     name,
     category,
     "imageUrl": image.asset->url,
-    "slug": slug.current,
+    "slug": { "current": slug.current }, // Fix: Ensure slug is an object
     tags,
     price,
     originalPrice,
     description,
     available
   }`;
+  
 
-  const food: FoodDetails | null = await client.fetch(query, { details });
+  const food = await client.fetch(query, { details });
 
   if (!food) {
     return (
@@ -52,9 +54,7 @@ export default async function FoodDetailsPage({
     );
   }
 
-  return (
-    <FoodDetailsContent food={food} />
-  );
+  return <FoodDetailsContent food={{ ...food, id: parseInt(food._id, 10) || Date.now() }} />;
 }
 
 // Client-side Component for UI and Add to Cart functionality
@@ -63,12 +63,18 @@ function FoodDetailsContent({ food }: { food: FoodDetails }) {
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
-    addToCart({
-      id: food.id,
-      name: food.name,
-      price: food.price,
-      quantity: 1,
-    });
+    const handleAddToCart = () => {
+      addToCart({
+        id: food.id, // Ensure `id` is a number
+        name: food.name,
+        price: food.price,
+        quantity: 1,
+        img: food.imageUrl, // Ensure `img` is provided
+        category: food.category,
+        available: food.available,
+        slug: food.slug,
+      });
+    };
   };
 const pageName = "Shop Detail"
   return (
