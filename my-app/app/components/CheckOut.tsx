@@ -2,14 +2,31 @@
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { route } from "sanity/router";
 
 export default function CheckOut() {
-  const { cart, clearCart } = useCart();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  console.log(errors);
+
+  
   const router = useRouter();
+  const CustomSubmit = (data: any) => {
+    console.log("Form Submitted:", data);
+    router.push("/shipping");
+  };
+  const { cart, clearCart } = useCart();
+ 
 
-
-  const subTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-  const discount = subTotal * 0.25; // 25% discount
+  const subTotal = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const discount = subTotal * 0.25;
   const tax = 54.76;
   const totalPrice = subTotal - discount + tax;
 
@@ -20,69 +37,140 @@ export default function CheckOut() {
         {/* Shipping Address Section */}
         <div className="md:col-span-2 bg-white p-8 shadow rounded-lg">
           <h2 className="text-2xl font-bold mb-6">Shipping Address</h2>
-          <form className="grid grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit(CustomSubmit)} className="grid grid-cols-2 gap-6">
+            {/* First Name */}
             <div>
-              <label className="block mb-2 text-sm font-medium">First name</label>
-              <input type="text" className="w-full border border-gray-300 p-2 rounded" />
+              <label className="block mb-2 text-sm font-medium">First Name</label>
+              <input
+                {...register("firstName", { required: "First Name is required" })}
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded"
+              />
+              {errors.firstName && <p className="text-red-600 font-bold">{errors.firstName.message?.toString()}</p>}
             </div>
+
+            {/* Last Name */}
             <div>
-              <label className="block mb-2 text-sm font-medium">Last name</label>
-              <input type="text" className="w-full border border-gray-300 p-2 rounded" />
+              <label className="block mb-2 text-sm font-medium">Last Name</label>
+              <input
+                {...register("lastName", { required: "Last Name is required" })}
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded"
+              />
+              {errors.lastName && <p className="text-red-600 font-bold">{errors.lastName.message?.toString()}</p>}
             </div>
+
+            {/* Email */}
             <div>
               <label className="block mb-2 text-sm font-medium">Email address</label>
-              <input type="email" className="w-full border border-gray-300 p-2 rounded" />
+              <input
+                {...register("email", { 
+                  required: "Email is required", 
+                  pattern: {
+                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                    message: "Invalid email address"
+                  }
+                })}
+              />
             </div>
+
+            {/* Phone */}
             <div>
-              <label className="block mb-2 text-sm font-medium">Phone number</label>
-              <input type="text" className="w-full border border-gray-300 p-2 rounded" />
+              <label className="block mb-2 text-sm font-medium">Phone Number</label>
+              <input
+                {...register("phone", { 
+                  required: "Phone Number is required",
+                  pattern: {
+                    value: /^[0-9]{10,12}$/,
+                    message: "Invalid phone number"
+                  }
+                })}
+                
+              />
+              
             </div>
+
+            {/* Company */}
             <div>
               <label className="block mb-2 text-sm font-medium">Company</label>
-              <input type="text" className="w-full border border-gray-300 p-2 rounded" />
+              <input
+                {...register("company", { required: "Company Name is required" })}
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded"
+              />
+              {errors.company && <p className="text-red-600 font-bold">{errors.company.message?.toString()}</p>}
             </div>
+
+            {/* Country */}
             <div>
               <label className="block mb-2 text-sm font-medium">Country</label>
-              <select className="w-full border border-gray-300 p-2 rounded">
-                <option>Choose country</option>
-                <option>USA</option>
-                <option>UK</option>
+              <select
+                {...register("country", { required: "Country selection is required" })}
+                className="w-full border border-gray-300 p-2 rounded"
+              >
+                <option value="">Choose country</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+                <option value="IND">IND</option>
+                <option value="PAK">UAE</option>
+                <option value="PAK">SIR</option>
+                <option value="PAK">BAN</option>
+                <option value="PAK">AFG</option>
               </select>
+              {errors.country && <p className="text-red-600 font-bold">{errors.country.message?.toString()}</p>}
             </div>
+
+            {/* City */}
             <div>
               <label className="block mb-2 text-sm font-medium">City</label>
-              <input type="text" className="w-full border border-gray-300 p-2 rounded" />
+              <input
+                {...register("city", { required: "City Name is required" })}
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded"
+              />
+              {errors.city && <p className="text-red-600 font-bold">{errors.city.message?.toString()}</p>}
             </div>
+
+            {/* Zip Code */}
             <div>
-              <label className="block mb-2 text-sm font-medium">Zip code</label>
-              <input type="text" className="w-full border border-gray-300 p-2 rounded" />
+              <label className="block mb-2 text-sm font-medium">Zip Code</label>
+              <input
+                {...register("zipCode", { required: "Zip Code is required" })}
+                type="text"
+                className="w-full border border-gray-300 p-2 rounded"
+              />
+              {errors.zipCode && <p className="text-red-600 font-bold">{errors.zipCode.message?.toString()}</p>}
+            </div>
+
+            {/* Billing Address Checkbox */}
+            <div className="mt-6 col-span-2">
+              <h1 className="text-xl font-semibold">Billing Address</h1>
+              <label className="flex items-center">
+                <input
+                  {...register("sameAsShipping")}
+                  type="checkbox"
+                  className="w-4 h-4 mr-2"
+                />
+                <span className="text-sm font-medium">Same as shipping address</span>
+              </label>
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex justify-between mt-8 col-span-2">
+              <button
+                className="border border-gray-300 px-8 py-2 rounded-lg text-gray-700 hover:bg-gray-200"
+                onClick={() => router.push("/cart")}
+              >
+                &larr; Back to Cart
+              </button>
+              <button
+                type="submit"
+                className="bg-[#ff9f0d] text-white px-8 py-2 rounded-lg hover:bg-orange-500"
+              >
+                Proceed to Shipping &rarr;
+              </button>
             </div>
           </form>
-
-          {/* Billing Address Checkbox */}
-          <div className="mt-6">
-            <h1 className="text-xl font-semibold">Billing Address</h1>
-            <label className="flex items-center">
-              <input type="checkbox" className="w-4 h-4 mr-2" />
-              <span className="text-sm font-medium">Same as shipping address</span>
-            </label>
-          </div>
-
-          {/* Navigation Buttons */}
-          <div className="flex justify-between mt-8">
-            <button 
-              className="border border-gray-300 px-8 py-2 rounded-lg text-gray-700 hover:bg-gray-200"
-              onClick={() => router.push("/cart")}  
-            >
-              &larr; Back to Cart
-            </button>
-            <button 
-              className="bg-[#ff9f0d] text-white px-8 py-2 rounded-lg hover:bg-orange-500"
-              onClick={() => router.push("/shipping")}  
-            >
-              Proceed to Shipping &rarr;
-            </button>
-          </div>
         </div>
 
         {/* Order Summary Section */}
@@ -134,7 +222,7 @@ export default function CheckOut() {
               onClick={() => {
                 alert("Order placed successfully!");
                 clearCart();  
-                router.push("/");
+                router.push("signup");
               }}
             >
               Place Order &rarr;

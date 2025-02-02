@@ -1,33 +1,53 @@
+'use client'
 import Image from "next/image";
+import { useState } from "react";
 import { IoCalendarNumberOutline } from "react-icons/io5";
 import { TiMessages } from "react-icons/ti";
 import { GrUserAdmin } from "react-icons/gr";
 import { SiIndigo } from "react-icons/si";
+import { FiSearch } from "react-icons/fi";
 import { IoIosStarOutline } from "react-icons/io";
 import { IoIosStar } from "react-icons/io";
-import { FiSearch } from "react-icons/fi";
 
 export default function BlogList() {
-  const articles = [
+  const [searchTerm, setSearchTerm] = useState("");
+  const [expandedArticle, setExpandedArticle] = useState<number | null>(null);
+
+  type Article = {
+    id: number;
+    title: string;
+    image: string;
+    content: string;
+  };
+
+  const articles:Article[] = [
     {
       id: 1,
       title: "10 Reasons To Do A Digital Detox Challenge",
       image: "/pizza.png",
+      content:
+        "At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
     },
     {
       id: 2,
       title: "Traditional Soft Pretzels with Sweet Beer Cheese",
       image: "/desert.png",
+      content:
+        "Pretzels with beer cheese make a perfect snack. The rich, cheesy dip complements the soft, salty pretzels in an irresistible way."
     },
     {
       id: 3,
       title: "The Ultimate Hangover Burger: Egg in a Hole",
-      image: "/mainMenu.png",
+      image: "/desert.png",
+      content:
+        "At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat."
     },
     {
       id: 4,
       title: "My Favorite Easy Black Pizza Toast Recipe",
       image: "/burger.png",
+      content:
+        "Pretzels with beer cheese make a perfect snack. The rich, cheesy dip complements the soft, salty pretzels in an irresistible way."
     },
   ];
   const articles2 = [
@@ -115,10 +135,14 @@ export default function BlogList() {
     { src: "/facebook.png", alt: "Facebook", link: "#" },
   ];
 
+  const filteredArticles = articles.filter((article) =>
+    article.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="max-w-screen-lg mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-8 py-14">
       <div className="md:col-span-2">
-        {articles.map((article) => (
+        {filteredArticles.map((article) => (
           <div key={article.id} className="mb-8">
             <div className="relative h-[300px] w-full">
               <Image
@@ -130,34 +154,20 @@ export default function BlogList() {
               />
             </div>
             <div className="flex items-center space-x-3 mt-5">
-              <span className="text-[#ff9f0d]">
-                <IoCalendarNumberOutline />
-              </span>
+              <span className="text-[#ff9f0d]"><IoCalendarNumberOutline /></span>
               <p>Feb 14, 2022 /</p>
-              <span className="text-[#ff9f0d]">
-                <TiMessages />
-              </span>
+              <span className="text-[#ff9f0d]"><TiMessages /></span>
               <p>3 /</p>
-              <span className="text-[#ff9f0d]">
-                <GrUserAdmin />
-              </span>
+              <span className="text-[#ff9f0d]"><GrUserAdmin /></span>
               <p>Admin</p>
             </div>
             <h2 className="text-2xl font-bold mt-4">{article.title}</h2>
             <hr className="border-[1px] border-gray-300 my-8" />
             <p className="mt-2 text-gray-700">
-              At vero eos et accusam et justo duo dolores et ea rebum. Stet
-              clita kasd gubergren, no sea takimata sanctus est Lorem ipsum
-              dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
-              elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-              magna aliquyam erat
-            </p>
-            <button className=" flex  items-center mt-4 px-4 py-2 text-lg border-[1px] border-[#ff9f0d] text-[#ff9f0d] rounded">
-              Read More{" "}
-              <span className="text-xl ml-2">
-                <SiIndigo />
-              </span>
-            </button>
+            {expandedArticle === article.id ? article.content : article.content.slice(0, 100) + "..."}</p>
+          <button className="flex items-center mt-4 px-4 py-2 text-lg border-[1px] border-[#ff9f0d] text-[#ff9f0d] rounded" onClick={() => setExpandedArticle(expandedArticle === article.id ? null : article.id)} >
+            {expandedArticle === article.id ? "Show Less" : "Read More"}
+          </button>
           </div>
         ))}
       </div>
@@ -166,8 +176,10 @@ export default function BlogList() {
         <div className="flex items-center mb-4">
           <input
             type="text"
-            placeholder="Search product"
+            placeholder="Search blog"
             className="w-full border p-4 rounded-md"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <div className="bg-[#ff9f0d] text-white p-[21px] rounded-r-md">
             <FiSearch />
@@ -314,8 +326,6 @@ export default function BlogList() {
           ))}
         </div>
       </div>
-
-        
 
       </div>
     </div>
