@@ -98,7 +98,7 @@ export default function BlogList() {
       price: "16",
     },
     {
-      id: 4,
+      id: 5,
       title: "Pizza Toast",
       image: "/unsplash10.png",
       price: "46",

@@ -1,13 +1,11 @@
 'use client';
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { client } from "@/sanity/lib/client";
-import { useCart } from "@/context/CartContext";
-import MenuNav from "@/app/components/Menu/MenuNav";
-import Header from "@/app/components/Header";
-import { useWishlist } from "@/context/WishlistContext";
-
-
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { client } from '@/sanity/lib/client';
+import { useCart } from '@/context/CartContext';
+import MenuNav from '@/app/components/Menu/MenuNav';
+import Header from '@/app/components/Header';
+import { useWishlist } from '@/context/WishlistContext';
 
 interface FoodDetails {
   id: number;
@@ -35,30 +33,37 @@ async function fetchFoodDetails(details: string) {
     description,
     available
   }`;
-  
+
   return await client.fetch(query, { details });
 }
 
-export default function FoodDetailsPage({ params }: { params: { details: string } }) {
+export default function FoodDetailsPage({
+  params,
+}: {
+  params: Promise<{ details: string }>; // `params` is a Promise
+}) {
   const [food, setFood] = useState<FoodDetails | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Define an async function to unwrap `params` and fetch data
     async function loadFood() {
       try {
-        const data = await fetchFoodDetails(params.details);
+        // Unwrap `params` using `await`
+        const { details } = await params;
+        const data = await fetchFoodDetails(details);
         if (data) {
           setFood({ ...data, id: parseInt(data._id, 10) || Date.now() });
         }
       } catch (error) {
-        console.error("Error fetching food details:", error);
+        console.error('Error fetching food details:', error);
       } finally {
         setLoading(false);
       }
     }
 
     loadFood();
-  }, [params.details]);
+  }, [params]); // Add `params` as a dependency
 
   if (loading) {
     return (
@@ -86,22 +91,12 @@ export default function FoodDetailsPage({ params }: { params: { details: string 
     );
   }
 
-  const { addToWishlist } = useWishlist();
-
-  const handleAddToWishlist = () => {
-    addToWishlist({
-      id: food.id,
-      name: food.name,
-      price: food.price,
-      img: food.imageUrl,
-      quantity: 1,
-      slug: food.slug.current,
-    });
-  };
   return <FoodDetailsContent food={food} />;
-  // In FoodDetailsPage.tsx
+}
+
 function FoodDetailsContent({ food }: { food: FoodDetails }) {
   const { addToCart } = useCart();
+  const { addToWishlist } = useWishlist();
 
   const handleAddToCart = () => {
     addToCart({
@@ -112,7 +107,18 @@ function FoodDetailsContent({ food }: { food: FoodDetails }) {
       img: food.imageUrl,
       category: food.category,
       available: food.available,
-      slug: { current: food.slug.current },  // Pass slug.current as a string
+      slug: { current: food.slug.current }, // Pass slug.current as a string
+    });
+  };
+
+  const handleAddToWishlist = () => {
+    addToWishlist({
+      id: food.id,
+      name: food.name,
+      price: food.price,
+      img: food.imageUrl,
+      quantity: 1,
+      slug: food.slug.current,
     });
   };
 
@@ -148,8 +154,8 @@ function FoodDetailsContent({ food }: { food: FoodDetails }) {
               <p className="mt-4 text-gray-700">{food.description}</p>
 
               <div className="mt-6">
-                <p className={`font-bold ${food.available ? "text-green-600" : "text-red-600"}`}>
-                  {food.available ? "Available Now" : "Out of Stock"}
+                <p className={`font-bold ${food.available ? 'text-green-600' : 'text-red-600'}`}>
+                  {food.available ? 'Available Now' : 'Out of Stock'}
                 </p>
               </div>
 
@@ -168,13 +174,13 @@ function FoodDetailsContent({ food }: { food: FoodDetails }) {
               </div>
 
               <div className="mt-6 flex items-center gap-4">
-              <button
+                <button
                   onClick={handleAddToWishlist}
                   className="px-4 py-2 bg-[#ff9f0d] text-white rounded hover:bg-yellow-700"
                 >
                   Add to Wishlist
                 </button>
-                
+
                 <button
                   onClick={handleAddToCart}
                   className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
@@ -189,6 +195,3 @@ function FoodDetailsContent({ food }: { food: FoodDetails }) {
     </>
   );
 }
-
-}
-

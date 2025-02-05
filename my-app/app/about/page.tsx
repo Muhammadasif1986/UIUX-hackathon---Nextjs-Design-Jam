@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
+import MenuNav from '../components/Menu/MenuNav'
 import Header from '../components/Header'
 import Hero1 from '../components/AboutPage/Hero1'
 import Hero2 from '../components/AboutPage/Hero2'
@@ -13,7 +13,7 @@ export default function About() {
   return (
     
     <div>
-      <NavBar />
+      <MenuNav />
       <Header 
       name={about}
       route={route}

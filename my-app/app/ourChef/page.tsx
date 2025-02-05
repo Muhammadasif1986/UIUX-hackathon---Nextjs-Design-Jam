@@ -1,5 +1,5 @@
 import React from 'react'
-import NavBar from '../components/NavBar'
+import MenuNav from '../components/Menu/MenuNav'
 import Header from '../components/Header'
 import OurChefDetails from '../components/OurChef/OurChefDetails'
 
@@ -7,7 +7,7 @@ export default function OurChef() {
       const Name = "Chef"
   return (
     <div>
-      <NavBar />
+      <MenuNav />
       <Header
       name={Name}
       />
