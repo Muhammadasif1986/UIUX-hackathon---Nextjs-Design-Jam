@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { client } from '@/sanity/lib/client';
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext'; // Import Cart Context
+import { useWishlist } from '@/context/WishlistContext';
 
 interface Product {
   id: number;  // Add ID
@@ -30,6 +31,21 @@ export default function ShopPage() {
   const [cart, setCart] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const productsPerPage = 6;
+  const { addToWishlist } = useWishlist();
+  const [added, setAdded] = useState(false);
+
+  const handleAddToWishlist = (item:any) => {
+    addToWishlist(item);
+    setAdded(true);
+  };
+
+  const item = {
+    id: 1, // Example item ID
+    name: 'Sample Food Item',
+    price: 10.99,
+    imageUrl: '/path/to/image.jpg',
+  };
+
 
   useEffect(() => {
     async function fetchData() {
@@ -174,6 +190,14 @@ export default function ShopPage() {
                   >
                     Add to Cart
                   </button>
+                  <button
+          onClick={() => {handleAddToWishlist(item)
+            alert(`Product Add Your Wish List`)
+          }}
+          className={`mt-4 px-4 py-2 w-full ${added ? 'bg-indigo-900' :'bg-indigo-800 '} text-white rounded-md`}
+        >
+          {added ? 'Added to Wishlist' : 'Add to Wishlist'}
+        </button>
                 </div>
               ))}
             </div>

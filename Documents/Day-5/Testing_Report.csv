@@ -1,0 +1,13 @@
+Test Case ID,Feature,Test Steps,Expected Result,Actual Result,Status,Severity Level,Assigned To,Remarks
+TC001,Product Listing,Open homepage & verify product display,Products should load properly,Products load successfully,Passed,Low,-,No issues found
+TC002,Product Detail Page,Click on product & verify details,Correct product details should display,Works fine,Passed,Low,-,No issues found
+TC003,Cart Functionality,Add item to cart & verify,Cart should update with selected item,Working correctly,Passed,Medium,-,Cart updates properly
+TC004,Search Feature,Search for a product,Correct results should be shown,Works fine,Passed,Low,-,Filters apply correctly
+TC005,Wishlist Functionality,Click on "Add to Wishlist" button & check,Item should appear in wishlist,Works fine,Passed,Medium,-,Wishlist updates correctly
+TC006,Form Validation (React Hook Form),Submit form with missing fields,Show validation errors,Validation errors displayed,Passed,High,-,Proper error messages
+TC007,API Handling,Disable API & reload page,Show error message or fallback UI,Displays "No products found",Passed,High,-,Fallback UI works
+TC008,Network Failure,Turn off internet & reload,Show "No connection" message,Correct message displayed,Passed,High,-,Error handled properly
+TC009,SQL Injection Test,Enter SQL query in input fields,Should prevent SQL injection,Input blocked correctly,Passed,High,-,Validation working
+TC010,Cross-Browser Test,Open in Chrome, Firefox, Edge,Should work properly in all browsers,Working fine,Passed,Medium,-,No major issues
+TC011,Performance Test,Run Lighthouse audit,Score should be 90+,Lighthouse score is 92,Passed,Low,-,Optimized images & lazy loading applied
+TC012,Mobile Responsiveness,Open on mobile devices,Should adjust layout properly,Layout adjusts correctly,Passed,Medium,-,Checked on iOS & Android

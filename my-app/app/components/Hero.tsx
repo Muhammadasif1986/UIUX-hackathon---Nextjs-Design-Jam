@@ -9,7 +9,7 @@ const Vibes = Great_Vibes({
     });
 export default function Hero() {
   return (
-    <main className='flex justify-center items-center w-full  lg:h-[550px] bg-[#0d0d0d] py-10 pt-48'>
+    <main className='flex justify-center items-center w-full  lg:h-[600px] bg-[#0d0d0d] py-20 pt-48 '>
       <div className='flex flex-col lg:flex-row justify-center items-center w-full lg:w-10/12'>
       <div className='flex w-10/12 lg:mt-0'>
             <div className='flex flex-col justify-center items-center h-auto lg:h-[400px] md:h-[300px] w-6 mr-5'>

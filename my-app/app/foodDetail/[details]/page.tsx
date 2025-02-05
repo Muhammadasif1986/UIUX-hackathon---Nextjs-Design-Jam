@@ -15,11 +15,16 @@ interface FoodDetails {
   available: boolean;
 }
 
-export default async function FoodDetailsPage({
-  params: { details },
-}: {
-  params: { details: string };
-}) {
+interface FoodDetailPageProps {
+  params: {
+    details: string
+  }
+}
+
+
+export default async function FoodDetailPage({ params }: FoodDetailPageProps) {
+  const { details } = params;
+  
   const query = `*[_type == "food" && slug.current == $details][0]{
     name,
     category,
@@ -104,3 +109,4 @@ export default async function FoodDetailsPage({
     </>
   );
 }
+

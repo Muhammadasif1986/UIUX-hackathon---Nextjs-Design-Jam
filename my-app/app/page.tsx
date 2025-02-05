@@ -9,13 +9,14 @@ import Menu from '../app/components/Menu';
 import OurChef from './components/OurChef/ourChef';
 import Testimonials from './components/Testimonials';
 import Properties from './components/properties';
-import Blog from './components/Blogs';
 import NavBar from './components/NavBar';
 
 
 export default function Home() {
   return (
    <div>
+      
+    
     <NavBar />
       <Hero />
       <Hero2 />
@@ -26,7 +27,7 @@ export default function Home() {
       <OurChef />
       <Testimonials />
       <Properties />
-      <Blog />
+      
    </div>
   );
 }

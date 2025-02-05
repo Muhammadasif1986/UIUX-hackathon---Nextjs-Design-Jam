@@ -1,5 +1,5 @@
 "use client";
-
+import { useUser, SignInButton, UserButton } from "@clerk/nextjs";
 import React from "react";
 import { FiSearch } from "react-icons/fi";
 import Link from "next/link";
@@ -8,10 +8,15 @@ import { FaRegUser } from "react-icons/fa";
 import PagesNav from "../PagesNav";
 import { LuChevronDown } from "react-icons/lu";
 import { useCart } from "@/context/CartContext";
+import { useWishlist } from '@/context/WishlistContext'
+import { AiOutlineHeart } from 'react-icons/ai';
 
 export default function MenuNav() {
   const { cart } = useCart(); // Get cart from context
   const cartItemCount = cart.length; // Count total items
+  const { wishlist } = useWishlist();
+  const wishlistCount = wishlist.length;
+  const { isSignedIn, user } = useUser();
 
   return (
     <main className="flex justify-center bg-[#0d0d0d] to-95% fixed top-0 left-0 w-full shadow-md z-50 p-4">
@@ -71,6 +76,29 @@ export default function MenuNav() {
           </span>
         )}
             </div>
+            <div className="relative ml-3 mt-5 lg:mt-0">
+            <Link href="/wishlist" className="relative">
+        <AiOutlineHeart className="text-white text-2xl cursor-pointer "/> {/* React icon */}
+        {wishlistCount > 0 && (
+          <span className="absolute top-0 right-0 bg-red-600 text-white text-xs font-semibold px-2 rounded-full">
+            {wishlistCount}
+          </span>
+        )}
+      </Link>
+      </div>
+      <div className="ml-5">
+        {isSignedIn ? (
+          // Show User Avatar with Sign Out Option
+          <UserButton afterSignOutUrl="/" />
+        ) : (
+          // Show Sign In Button
+          <SignInButton>
+            <button className="bg-[#ff9f0d] hover:bg-[#ff9f3d] text-white px-4 py-2 rounded">
+              Sign In
+            </button>
+          </SignInButton>
+        )}
+      </div>
           </div>
         </div>
       </div>

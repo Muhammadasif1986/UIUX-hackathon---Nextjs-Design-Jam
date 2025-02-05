@@ -56,19 +56,19 @@ export default function CartPage() {
 
                   <td className="p-2">
                     <div className="flex items-center gap-1 md:gap-2">
-                      <button
-                        className="border px-1 py-1 md:px-2 rounded text-xs md:text-sm"
-                        onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      >
+                    <button
+                      aria-label="Decrease quantity"
+                       onClick={() => item.quantity > 1 && updateQuantity(item.id, item.quantity - 1)}
+                        >
                         -
-                      </button>
+                    </button>
                       <span className="text-sm md:text-base">{item.quantity}</span>
                       <button
-                        className="border px-1 py-1 md:px-2 rounded text-xs md:text-sm"
-                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      >
-                        +
-                      </button>
+                       aria-label="Increase quantity"
+                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        >
+                         +
+                        </button>
                     </div>
                   </td>
 
@@ -77,12 +77,12 @@ export default function CartPage() {
                   </td>
 
                   <td className="p-2 text-center">
-                    <button
-                      className="text-xl md:text-2xl text-gray-600 hover:text-red-600"
-                      onClick={() => removeFromCart(item.id)}  // ✅ Pass ID instead of object
-                    >
-                      <RxCross1 />
-                    </button>
+                  <button
+                    aria-label="Remove item from cart"
+                    onClick={() => removeFromCart(item.id)}
+                  >
+                    <RxCross1 />
+                  </button>
                   </td>
                 </tr>
               ))}
@@ -96,11 +96,13 @@ export default function CartPage() {
 
         {/* ✅ Proceed to Checkout Button */}
         <button
-          onClick={() => router.push("/checkout")}
-          className="mt-6 w-full bg-blue-600 text-white px-4 py-2 rounded-md text-lg font-semibold hover:bg-blue-700 transition"
-        >
-          Proceed to Checkout
-        </button>
+  onClick={() => router.push("/checkout")}
+  disabled={cart.length === 0}
+  className={`mt-6 w-full px-4 py-2 rounded-md text-lg font-semibold transition 
+    ${cart.length === 0 ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700"}`}
+>
+  Proceed to Checkout
+</button>
 
         {/* Clear Cart Button */}
         <button

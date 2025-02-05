@@ -5,6 +5,9 @@ import { client } from "@/sanity/lib/client";
 import { useCart } from "@/context/CartContext";
 import MenuNav from "@/app/components/Menu/MenuNav";
 import Header from "@/app/components/Header";
+import { useWishlist } from "@/context/WishlistContext";
+
+
 
 interface FoodDetails {
   id: number;
@@ -83,9 +86,20 @@ export default function FoodDetailsPage({ params }: { params: { details: string 
     );
   }
 
-  return <FoodDetailsContent food={food} />;
-}
+  const { addToWishlist } = useWishlist();
 
+  const handleAddToWishlist = () => {
+    addToWishlist({
+      id: food.id,
+      name: food.name,
+      price: food.price,
+      img: food.imageUrl,
+      quantity: 1,
+      slug: food.slug.current,
+    });
+  };
+  return <FoodDetailsContent food={food} />;
+  // In FoodDetailsPage.tsx
 function FoodDetailsContent({ food }: { food: FoodDetails }) {
   const { addToCart } = useCart();
 
@@ -98,7 +112,7 @@ function FoodDetailsContent({ food }: { food: FoodDetails }) {
       img: food.imageUrl,
       category: food.category,
       available: food.available,
-      slug: food.slug,
+      slug: { current: food.slug.current },  // Pass slug.current as a string
     });
   };
 
@@ -153,12 +167,21 @@ function FoodDetailsContent({ food }: { food: FoodDetails }) {
                 </div>
               </div>
 
+              <div className="mt-6 flex items-center gap-4">
               <button
-                onClick={handleAddToCart}
-                className="mt-6 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-              >
-                Add to Cart
-              </button>
+                  onClick={handleAddToWishlist}
+                  className="px-4 py-2 bg-[#ff9f0d] text-white rounded hover:bg-yellow-700"
+                >
+                  Add to Wishlist
+                </button>
+                
+                <button
+                  onClick={handleAddToCart}
+                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -166,3 +189,6 @@ function FoodDetailsContent({ food }: { food: FoodDetails }) {
     </>
   );
 }
+
+}
+

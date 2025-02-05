@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2015", // Ensures compatibility with modern JavaScript features like Set
+    "target": "es5",// Ensures compatibility with modern JavaScript features like Set
     "lib": ["dom", "dom.iterable", "esnext"], // Includes required libraries for browser and ESNext features
     "allowJs": true,
     "skipLibCheck": true,
@@ -8,7 +8,7 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",

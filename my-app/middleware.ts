@@ -1,12 +1,17 @@
-import { clerkMiddleware } from "@clerk/nextjs/server";
+// middleware.ts
+import { authMiddleware } from "@clerk/nextjs"; // 👈 `clerkMiddleware` ki jagah `authMiddleware` use karein
+import { NextResponse } from "next/server";
 
-export default clerkMiddleware();
+export default authMiddleware({
+  publicRoutes: ["/", "/sign-in", "/sign-up"], // 👈 Public routes ko yahan define karein
+  afterAuth(auth, req) {
+    if (!auth.userId && !auth.isPublicRoute) {
+      return NextResponse.redirect(new URL("/sign-in", req.url)); // 👈 Unauthorized users ko redirect karein
+    }
+    return NextResponse.next();
+  },
+});
 
 export const config = {
-  matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
-  ],
+  matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
 };
