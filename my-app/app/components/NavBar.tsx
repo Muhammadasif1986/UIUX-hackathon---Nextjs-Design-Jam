@@ -65,8 +65,7 @@ export default function NavBar() {
             <Link href="/error404">
               <PiHandbagSimple className="text-white text-2xl ml-3 mt-5 lg:mt-0" />
             </Link>
-          </div>
-          <div>
+            <div className="ml-10 mt-3 lg:mt-0">
             {isClient && ( // Avoid hydration mismatch
               isSignedIn ? (
                 <UserButton 
@@ -81,6 +80,8 @@ export default function NavBar() {
               )
             )}
           </div>
+          </div>
+          
         </div>
       </div>
     </main>

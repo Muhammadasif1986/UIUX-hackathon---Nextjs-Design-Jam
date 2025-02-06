@@ -86,7 +86,7 @@ export default function MenuNav() {
         )}
       </Link>
       </div>
-      <div className="ml-5">
+      <div className="ml-10 mt-3 lg:mt-0">
         {isSignedIn ? (
           // Show User Avatar with Sign Out Option
           <UserButton afterSignOutUrl="/" />
