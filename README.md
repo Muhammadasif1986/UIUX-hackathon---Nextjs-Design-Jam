@@ -1,6 +1,6 @@
 
 UI Figma Hackathon with Nextjs
- 
+
 # Q-Commerce - Marketplace Project
 
 ## Project Overview
@@ -58,7 +58,7 @@ Q-Commerce is a dynamic and fully functional e-commerce platform designed with m
 
 ## Deployment Details
 
-- **Staging Environment Link**: [https://uiux-hackathon-nextjs-design-jam-647d.vercel.app/]
+- **Staging Environment Link**: [https://uiux-hackathon-nextjs-design-jam-647d-ndkongll5.vercel.app/]
 - **GitHub Repository**: [https://github.com/Muhammadasif1986/UIUX-hackathon---Nextjs-Design-Jam.git]
 - **Hosting Platform**: Vercel
 
